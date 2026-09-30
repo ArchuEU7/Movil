@@ -1,19 +1,22 @@
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using System.Collections.Generic;
+using UnityEngine.Events;
 
 public class CharacterCreator : MonoBehaviour
 {
     [System.Serializable]
-    public class  CharacterData
+    public class CharacterData
     {
         public string nombre;
         public int edad;
+
     }
     //Botones
-    [SerializeField] Button Añadir; 
+    [SerializeField] Button Añadir;
     [SerializeField] GameObject Boton1;
+    [SerializeField] Button Confirmar;
 
     //Nombres
     [SerializeField] GameObject NombreTexto;
@@ -26,20 +29,41 @@ public class CharacterCreator : MonoBehaviour
     public List<CharacterData> personajes = new List<CharacterData>();
     string nombreActual;
 
+    // Acción almacenada para poder eliminarla correctamente
+    UnityAction confirmarAction;
+
+
     void Awake()
     {
         Añadir.onClick.AddListener(AñadirPersonaje);
         NombreUsuario.onSubmit.AddListener(AlEnviarNombre);
         EdadUsuario.onSubmit.AddListener(AlEnviarEdad);
 
+        // Vincular Confirmar para que haga lo mismo que enviar el nombre o la edad,
+        // según cuál campo esté activo en ese momento.
+        confirmarAction = () =>
+        {
+            if (NombreUsuario.gameObject.activeSelf)
+            {
+                AlEnviarNombre(NombreUsuario.text);
+            }
+            else if (EdadUsuario.gameObject.activeSelf)
+            {
+                AlEnviarEdad(EdadUsuario.text);
+            }
+        };
+        Confirmar.onClick.AddListener(confirmarAction);
+
         OcultarTodo();
     }
 
-     void OnDestroy()
+    void OnDestroy()
     {
         Añadir.onClick.RemoveListener(AñadirPersonaje);
         NombreUsuario.onSubmit.RemoveListener(AlEnviarNombre);
         EdadUsuario.onSubmit.RemoveListener(AlEnviarEdad);
+        // Eliminar la acción almacenada correctamente
+        Confirmar.onClick.RemoveListener(confirmarAction);
     }
 
     //Paso 1 ok
@@ -62,6 +86,7 @@ public class CharacterCreator : MonoBehaviour
         {
             NombreUsuario.ActivateInputField();
             return;
+
         }
 
         nombreActual = texto;
@@ -76,7 +101,7 @@ public class CharacterCreator : MonoBehaviour
     //Paso 3 ok
     void AlEnviarEdad(string texto)
     {
-       if (!int.TryParse(texto, out int edad) || edad < 0)
+        if (!int.TryParse(texto, out int edad) || edad < 0)
         {
             EdadUsuario.ActivateInputField();
             return;
@@ -99,12 +124,12 @@ public class CharacterCreator : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
