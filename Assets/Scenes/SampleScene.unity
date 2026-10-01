@@ -789,7 +789,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 1
@@ -935,8 +935,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -8.2679, y: -4.7513}
-  m_SizeDelta: {x: 298.19, y: 618.08}
+  m_AnchoredPosition: {x: 0.0034256, y: 0.0021405}
+  m_SizeDelta: {x: 301.66, y: 620.07}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &570961967
 MonoBehaviour:
@@ -951,7 +951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.43137255}
+  m_Color: {r: 0.4433962, g: 0.16941082, b: 0.16941082, a: 0.43137255}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1089,13 +1089,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36bf5725671f06b489caacca2e70c522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterCreator
-  "A\xF1adir": {fileID: 155119847}
-  Boton1: {fileID: 570961965}
-  Confirmar: {fileID: 349302576}
-  NombreTexto: {fileID: 1104817287}
-  NombreUsuario: {fileID: 995510665}
-  EdadTexto: {fileID: 1221156474}
-  EdadUsuario: {fileID: 1131829399}
+  botonAnadir: {fileID: 0}
+  boton1: {fileID: 570961965}
+  nombreTexto: {fileID: 0}
+  nombreUsuario: {fileID: 0}
+  edadTexto: {fileID: 0}
+  edadUsuario: {fileID: 0}
+  botonBuscar: {fileID: 0}
+  panelBusqueda: {fileID: 0}
+  idUsuario: {fileID: 0}
+  resultadoTexto: {fileID: 0}
   personajes: []
 --- !u!4 &920343586
 Transform:
